@@ -1,0 +1,1 @@
+export const GO_IP = '41ba-2601-249-4300-6a00-a869-db26-ef33-7978.ngrok-free.app';
