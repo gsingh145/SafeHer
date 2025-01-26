@@ -1,0 +1,13 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# frontend dependencies and local files
+/frontend/node_modules/
+/frontend/.expo/
+/frontend/config.js
+/frontend/firebase/firebaseConfig.js
+/frontend/app.json
+/frontend/dist/
+
+# backend dependencies and local files
+/backend/main
+/backend/firebase-key.json
