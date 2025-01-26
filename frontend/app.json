@@ -1,0 +1,19 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "0470c901-946a-4bc6-9b49-c64d3436615d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0470c901-946a-4bc6-9b49-c64d3436615d"
+    },
+    "android": {},
+    "ios": {
+      "bundleIdentifier": "com.gsingh133.frontend"
+    }
+  }
+}
