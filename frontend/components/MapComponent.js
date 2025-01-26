@@ -22,7 +22,11 @@ const MapComponent = ({ filterCategory }) => {
       }
     };
 
-    fetchMarkers();
+    fetchMarkers(); // Initial fetch
+
+    const intervalId = setInterval(fetchMarkers, 5000); // Fetch every 5 seconds
+
+    return () => clearInterval(intervalId); // Clear interval on component unmount
   }, [filterCategory]); // Refetch whenever filterCategory changes
 
   return (

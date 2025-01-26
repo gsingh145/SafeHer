@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { styles } from '../styles/styles'; // Import the shared stylesheet
 
@@ -20,15 +20,21 @@ const FilterScreen = ({ navigation, setFilterCategory }) => {
           onValueChange={(value) => setCategory(value)}
           style={styles.picker}
         >
+
           <Picker.Item label="All" value="All" />
+          <Picker.Item label="Violence" value="Violence" />
+          <Picker.Item label="Raised Voices" value="Raised Voices" />
+          <Picker.Item label="Suspicious Activity" value="Suspicious Activity" />
+          <Picker.Item label="Theft" value="Theft" />
           <Picker.Item label="Harassment" value="Harassment" />
-          <Picker.Item label="Abuse" value="Abuse" />
-          <Picker.Item label="Other" value="Other" />
+          <Picker.Item label="Stalking" value="Stalking" />
         </Picker>
       </View>
 
-      <View style={[styles.submitButtonContainer, styles.button]}>
-        <Button title="Apply Filter" onPress={applyFilter} color="#2196F3" />
+      <View style={styles.submitButtonContainer}>
+      <TouchableOpacity style={styles.button} onPress={applyFilter}>
+          <Text style={styles.buttonText}>Apply Filter</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

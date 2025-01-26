@@ -9,6 +9,8 @@ import MapScreen from './screens/MapScreen';
 import FilterScreen from './screens/FilterScreen';
 import ReportIncidentScreen from './screens/ReportIncidentScreen';
 import { styles } from './styles/styles';
+import { Image } from 'react-native';
+
 
 const Stack = createNativeStackNavigator();
 const streets = [
@@ -62,28 +64,34 @@ const App = () => {
   };
 
   // Listen for new incidents in the Firebase Realtime Database
+  // Listen for new incidents in the Firebase Realtime Database
   useEffect(() => {
-    // Request notification permissions on app load
+    let isInitialLoad = true; // Track if it's the initial load of the data
     requestNotificationPermissions();
 
-    // Start listening for new incidents
     const handleNewEntry = (data) => {
-      // Extract latitude and longitude from the data
       const { latitude, longitude } = data;
 
-      // Get the street name based on the coordinates
       const streetName = getStreetName(latitude, longitude);
 
-      // Show the street name in an alert
-      Alert.alert("New Incident Reported", `Location: ${streetName}`);
-    }; 
+      Alert.alert("New Incident Reported", `Location: WALC`);
+    };
 
-    listenForNewEntries("incidents", handleNewEntry); // Replace 'incidents' with your database path
+    const unsubscribe = listenForNewEntries("incidents", (data) => {
+      if (isInitialLoad) return; // Skip alerts during the initial load
+      handleNewEntry(data); // Process the new data
+    });
+
+    const timeout = setTimeout(() => {
+      isInitialLoad = false;
+    }, 2000); // Adjust timeout to fit the expected initial load time
 
     return () => {
-      // Optional: Clean up listeners here if needed
+      clearTimeout(timeout); // Cleanup timeout
+      unsubscribe(); // Cleanup Firebase listener
     };
   }, []);
+
 
   return (
     <NavigationContainer>

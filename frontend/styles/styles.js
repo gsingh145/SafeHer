@@ -3,53 +3,76 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#d5a6bd',
+    backgroundColor: '#b69189', // Primary background color
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    paddingHorizontal: 30,
+    paddingVertical: 40,
   },
   map: {
     width: '100%',
     height: '50%',
   },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    padding: 10,
-    backgroundColor: '#fff', // White for better readability
-  },
   text: {
-    color: '#4a4a4a',
-    marginBottom: 10,
+    color: '#000000', // Updated text color to black
     fontSize: 18,
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color: '#333', // Dark text for contrast
+    color: '#000000', // Updated title text color to black
+    textAlign: 'center',
   },
   buttonContainer: {
-    padding: 10,
-    width: '100%', // Ensures consistent alignment
+    marginTop: 50,
+    width: '80%',
+  },
+  submitButtonContainer: {
+    marginTop: 120,
+    width: '80%',
+  },
+  button: {
+    backgroundColor: '#debf9e', // Updated button background color
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#000000', // Updated button text color to black
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   pickerContainer: {
-    height: 50,
-    width: '100%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 20,
-    backgroundColor: '#fff',
+    width: '90%',
+    height: 8,
+    borderRadius: 10,
+    marginBottom: 100,
+    justifyContent: 'center',
   },
   picker: {
     height: '100%',
     width: '100%',
+    paddingHorizontal: 10,
   },
   headerStyle: {
-    headerStyle: { backgroundColor: '#d5a6bd' },
-    headerTintColor: '#4a4a4a', // Change the title color here
+    headerStyle: { backgroundColor: '#b69189' }, // Updated header background color
+    headerTintColor: '#000000', // Updated header title color to black
     headerTitleStyle: { fontWeight: 'bold' },
   },
+  textInput: {
+    width: 300,
+    height: 50,
+    textAlign: 'center',
+    textAlignVertical: 'top',
+    marginBottom: 30,
+    marginTop: 30,
+    backgroundColor: '#d3d3d3', // Updated to light grey background
+    borderColor: '#debf9e', // Updated border color
+    borderWidth: 1,
+    borderRadius: 5,
+    color: '#000000', // Updated text input color to black
+  }
 });

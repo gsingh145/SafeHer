@@ -3,10 +3,16 @@ import React from 'react';
 import { View, Button } from 'react-native';
 import MapComponent from '../components/MapComponent';
 import { styles } from '../styles/styles';
+import { Image } from 'react-native';
+
 
 const MapScreen = ({ navigation, filterCategory }) => {
   return (
     <View style={styles.container}>
+      <Image
+        source={require('../assets/logo.png')}
+        style={{ width: '100%', height: 100, resizeMode: 'contain', marginBottom: 20 }} // Adjusted height and width
+      />
       <MapComponent filterCategory={filterCategory} />
       <View style={styles.buttonContainer}>
         <Button

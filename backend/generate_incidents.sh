@@ -11,13 +11,21 @@ random_float() {
     echo "$(awk -v min=$1 -v max=$2 'BEGIN{srand(); print min+rand()*(max-min)}')"
 }
 
-# Categories list
-categories=("Abuse" "Harassment" "Theft" "Vandalism" "Robbery" "Fraud")
+# Categories from the picker items
+categories=("Violence" "Raised Voices" "General Suspicious Activity" "Theft" "Harassment" "Stalking")
 
-# Generate random description
+# Generate random description based on category
 generate_description() {
-    descriptions=("Physical altercation reported" "Theft of personal property occurred" "Harassment via social media" "Graffiti found on property" "Assault reported in public area" "Fraudulent activity detected")
-    echo "${descriptions[$RANDOM % ${#descriptions[@]}]}"
+    local category=$1
+    case $category in
+        "Violence") echo "Physical altercation reported";;
+        "Raised Voices") echo "Loud verbal dispute heard";;
+        "General Suspicious Activity") echo "Unusual behavior observed";;
+        "Theft") echo "Personal property stolen";;
+        "Harassment") echo "Individual reported unwanted attention";;
+        "Stalking") echo "Repeated unwanted following observed";;
+        *) echo "No description available";;
+    esac
 }
 
 # Capture arguments passed to the script
@@ -32,11 +40,14 @@ if [ $# -ge 1 ]; then
 fi
 
 generate_incident() {
+    local category="${categories[$RANDOM % ${#categories[@]}]}"
+    local description="$(generate_description "$category")"
+
     local incident_data
     incident_data=$(cat <<EOF
 {
-    "Category": "${categories[$RANDOM % ${#categories[@]}]}",
-    "Description": "$(generate_description)",
+    "Category": "$category",
+    "Description": "$description",
     "Latitude": $(random_float $LAT_MIN $LAT_MAX),
     "Longitude": $(random_float $LON_MIN $LON_MAX)
 }
